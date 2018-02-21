@@ -48,5 +48,5 @@ int sort_reheap(int *a, int size, int idx) {
 }
 
 int sort_cmp(int a, int b) {
-	return a<b?0:1;
+	return a<b?1:0;
 }

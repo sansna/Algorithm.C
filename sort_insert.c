@@ -27,7 +27,7 @@ int sort_insert(int *a, int size) {
 }
 
 int sort_cmp(int a, int b) {
-	return a<b?0:1;
+	return a<b?1:0;
 }
 
 int sort_insert_step(int *a, int size, int i) {

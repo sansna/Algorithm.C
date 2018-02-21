@@ -38,7 +38,7 @@ int sort_bubble_step(int *a, int i) {
 }
 
 int sort_cmp(int m, int n) {
-	return m<n?0:1;
+	return m<n?1:0;
 }
 
 int swap_2(int *m, int *n) {
