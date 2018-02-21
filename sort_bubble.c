@@ -15,7 +15,7 @@ int main()
 	int ret = 0;
 	ret = sort_bubble(a, SIZE);
 
-	for (i = 0; i < 100; i ++)
+	for (i = 0; i < SIZE; i ++)
 		fprintf(stdout, "%d,", a[i]);
 	return 0;
 }

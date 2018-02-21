@@ -13,7 +13,7 @@ int main()
 	int i;
 	sort_insert(a, SIZE);
 
-	for (i = 0; i < 100; i ++)
+	for (i = 0; i < SIZE; i ++)
 		fprintf(stdout, "%d,", a[i]);
 	return 0;
 }

@@ -12,49 +12,38 @@ int main()
 	int i = 0;
 	sort_heap(a, SIZE);
 
-	for (i = 1; i <= 100; i ++)
+	for (i = 1; i <= SIZE; i ++)
 		fprintf(stdout, "%d,", a[i]);
 	return 0;
 }
 
 int sort_heap(int *a, int size) {
 	int i = SIZE/2;
-	int ret;
 	for (; i > 0; i --) {
 		sort_reheap(a, SIZE, i);
 	}
 	i = SIZE;
 	for (; i > 1; i --) {
-		ret = 1;
 		a[i] = a[i] ^ a[1];
 		a[1] = a[i] ^ a[1];
 		a[i] = a[i] ^ a[1];
 
-		ret = sort_reheap(a, i - 1, 1);
+		sort_reheap(a, i - 1, 1);
 	}
 	return 0;
 }
 
 int sort_reheap(int *a, int size, int idx) {
-	int tmp = idx;
-	if (idx * 2 <= size) {
-		if (sort_cmp(a[2*idx], a[idx]))
-			tmp = 2 * idx;
-		if (((2*idx + 1) <= size) 
-			&& sort_cmp(a[2*idx + 1], a[tmp]))
-			tmp = 2 * idx + 1;
-
-		if (tmp != idx) {
-			a[idx] = a[idx] ^ a[tmp];
-			a[tmp] = a[idx] ^ a[tmp];
-			a[idx] = a[idx] ^ a[tmp];
-
-			sort_reheap(a, size, tmp);
-			return 0;
-		}
-		else
-			return 0;
+	int rc = a[idx];
+	int j;
+	for (j = 2 * idx; j <= size; j *= 2) {
+		if (j < size && (!sort_cmp(a[j], a[j + 1]))) j ++;
+		if (sort_cmp(rc, a[j]))
+			break;
+		a[idx] = a[j];
+		idx = j;
 	}
+	a[idx] = rc;
 	return 0;
 }
 
