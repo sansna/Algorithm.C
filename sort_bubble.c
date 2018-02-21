@@ -17,6 +17,7 @@ int main()
 
 	for (i = 0; i < 100; i ++)
 		fprintf(stdout, "%d,", a[i]);
+	return 0;
 }
 
 int sort_bubble(int *a, int size) {
@@ -33,6 +34,7 @@ int sort_bubble_step(int *a, int i) {
 		if (sort_cmp(a[j], a[j + 1]))
 			swap_2(&a[j], &a[j + 1]);
 	}
+	return 0;
 }
 
 int sort_cmp(int m, int n) {

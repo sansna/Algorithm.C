@@ -15,6 +15,7 @@ int main()
 
 	for (i = 0; i < 100; i ++)
 		fprintf(stdout, "%d,", a[i]);
+	return 0;
 }
 
 int sort_insert(int *a, int size) {
