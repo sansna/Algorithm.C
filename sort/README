@@ -1,0 +1,5 @@
+sort algorithms
+
+Sort methods are divided into 5 categories: simple, quick, heap, merge and radix sort.
+
+Simple sorts are easy to understand. Quick sort is basically the fastest method for medium sized sets, it cost O(1) memory space, but it is unstable, in some rare situations it may retrograde to simple method's O(n^2). Heap sort is the method which best balances time and space, though it is fast in principle(least actions), modern computer's cache cannot be applied to it, making it slows dramatically when sorting large sized sets(according to CPU's cache size=64KiB). 2-way merge sort is a stable method, it always converges at O(log2(n)), but it needs same memory size as the set. Radix sort is stable too, it works without comparism, best for sorting large sized sets with fewer digits, but it also cost same size memory as the data set *plus* some header space for storing radix related info, and it sorts *integer only*.
