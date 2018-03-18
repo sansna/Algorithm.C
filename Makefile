@@ -11,9 +11,12 @@ TARGETS_WITH_LIBS = prime.out
 CFLAGS = -g -O2 -Wno-unused-result
 LIBS = -lm
 all:$(TARGETS) $(TARGETS_WITH_LIBS)
+	@$(MAKE) -C sort
 clean:
 	@rm -f *.out
+	@$(MAKE) -C sort clean
 $(TARGETS):
 	@$(CC) $(CFLAGS) $*.c -o $*.out
 $(TARGETS_WITH_LIBS):
 	@$(CC) $(CFLAGS) $*.c -o $*.out $(LIBS)
+.PHONY:clean all
