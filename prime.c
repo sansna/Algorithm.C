@@ -1,6 +1,7 @@
 /* Print Nth prime */
 #include <stdio.h>
 #include <stdint.h>
+#include <inttypes.h>
 #include <math.h>
 
 int min_2(int m, int n);
@@ -20,11 +21,11 @@ int main()
 		while (1) {
 			n ++;
 			ret = prime(n);
-			fprintf(stdout, "%dth prime number is %d\n.", n, ret);
+			fprintf(stdout, "%dth prime number is %"PRId64"\n.", n, ret);
 		}
 	}
 	ret = prime(n);
-	fprintf(stdout, "%dth prime number is %d\n.", n, ret);
+	fprintf(stdout, "%dth prime number is %"PRId64"\n.", n, ret);
 	
 	return 0;
 }
