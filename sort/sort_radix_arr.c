@@ -7,6 +7,8 @@ int a[SIZE] = {843,44,727,774,90,270,243,957,135,473,949,462,813,531,320,812,195
 //Auxiliary storage.
 int b[RADIX * COLSIZE] = {0};
 
+int sort_radix(int *a, int size);
+
 int main()
 {
 	int i;

@@ -23,6 +23,8 @@ struct SLINK_HEAD {
 } slnk_hdr[RADIX] = {0};
 //Auxiliary storage.
 
+int sort_radix(int *a, int size);
+
 int main()
 {
 	int i;
