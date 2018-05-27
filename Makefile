@@ -8,15 +8,28 @@ TARGETS = euc-mod.out\
 		  fibo.out\
 		  random_gen.out
 TARGETS_WITH_LIBS = prime.out
+
+CPPFLAGS = -D__NO_PRINT
 CFLAGS = -g -O2 -Wno-unused-result
 LIBS = -lm
-all:$(TARGETS) $(TARGETS_WITH_LIBS)
+
+TIME ?= /usr/bin/time
+export LIBS TIME CFLAGS CPPFLAGS
+
+all: $(TARGETS) $(TARGETS_WITH_LIBS) rand_sets
 	@$(MAKE) -C sort
+
 clean:
-	@rm -f *.out
+	@rm -f *.out *.h
 	@$(MAKE) -C sort clean
-$(TARGETS):
+
+$(TARGETS):%.out:%.c
 	@$(CC) $(CFLAGS) $*.c -o $*.out
-$(TARGETS_WITH_LIBS):
+
+$(TARGETS_WITH_LIBS):%.out:%.c
 	@$(CC) $(CFLAGS) $*.c -o $*.out $(LIBS)
+
+rand_sets: random_gen.out
+	@./random_gen.out
+
 .PHONY:clean all
