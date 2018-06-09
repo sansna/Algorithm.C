@@ -1,0 +1,33 @@
+According to Algorithms 4th edition, most used search algorithms are:
+1. Binary Search Trees(BST);
+2. Red Black Trees(RBT);
+3. Hash tables.
+
+Binary search tree makes an improvement to binary search algorithm to sorted
+arrays, makes it faster when doing inserting.
+BST supported operations: insert, search, *delete*;
+
+Hashing has several forms dealing with collision, first one is to do with separate
+chaining, each matching symbol contains a linked list. Second one is to do with
+linear probing: first hashing the symbol to an index, and compare the key since
+the index untill matched, or a NULL key to a search miss.
+-The second improves cache miss counts the first might introduces. However the
+first is capable of avoiding the disadvantage through self memory management.
+-The second method met with some trickier problem when deleting items. You cannot
+simply set the item to NULL, you should move the end item of the hashing list
+to the deleting item position.
+-According to Prop.M, if the hashing table length is twice more larger than elements
+to be probed, the avg. probing counts is between 1.5(hits) and 2.5(misses).
+
+Memory usage for N items and M hashing modulars in different search algorithms:
+1. separate chaining: ~48N + 56M
+2. linear probing:    32N ~ 128N
+3. BST:               ~56N
+
+RBT provide guaranteed worst case performance and a range of operations, Hash
+is easy to implement and gives optimal performance. While keys are long strings, there
+can be data structure faster than hash and more operations than RBT(Trie).
+
+(Non-useful info)In java, java.util.TreeMap and java.util.HashMap are libraries for RBT and hashing.
+
+
