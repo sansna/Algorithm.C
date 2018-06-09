@@ -18,6 +18,6 @@ $(TARGETS):%.out:%.c ../random_set1.h ../random_set2.h
 	@$(CC) $(CPPFLAGS) $(CFLAGS) $*.c -o $@
 
 ../random_set1.h ../random_set2.h:
-	$(MAKE) -C ..
+	@$(MAKE) -C ..
 
 .PHONY: FORCE

@@ -11,7 +11,7 @@ $(TARGETS):%.out:%.c ../random_set1.h
 	@$(CC) $(CPPFLAGS) $(CFLAGS) $*.c -o $@
 
 ../random_set1.h:
-	$(MAKE) -C ..
+	@$(MAKE) -C ..
 
 clean: 
 	@rm -f *.out

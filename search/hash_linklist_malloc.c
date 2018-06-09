@@ -19,6 +19,7 @@ struct SRH_HASH {
 	int (*search)(int value, struct SRH_HASH *ht);
 	int (*del)(int value, struct SRH_HASH *ht);
 	int (*hash)(int value);
+	int (*free)(struct SRH_HASH *ht);
 };
 
 void tmp_init(struct SRH_HASH *ht) {
@@ -73,6 +74,21 @@ int tmp_search(int v, struct SRH_HASH *ht) {
 	return 1;
 }
 
+int tmp_free(struct SRH_HASH *ht) {
+	int i = 0;
+	struct HASH_LINK_LST *l,*next = NULL;
+	for (; i < BUCKETS; i++) {
+		if(ht->p[i]) {
+			l = ht->p[i];
+			do {
+				next = l->next;
+				free(l);
+				l = next;
+			} while(l);
+		}
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	struct SRH_HASH hash;
@@ -83,6 +99,7 @@ int main(int argc, char *argv[])
 	hash.hash = tmp_hash;
 	hash.insert = tmp_insert;
 	hash.search = tmp_search;
+	hash.free = tmp_free;
 	hash.del = NULL;
 
 	if (argc > 1) {
@@ -111,5 +128,7 @@ int main(int argc, char *argv[])
 	if (!hash.search(v, &hash))
 		fprintf(stdout, "The value %d exists.\n", v);
 	else fprintf(stdout, "The value %d does not exist.\n", v);
+
+	hash.free(&hash);
 	return 0;
 }

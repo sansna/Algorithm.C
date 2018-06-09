@@ -22,6 +22,7 @@ all: $(TARGETS) $(TARGETS_WITH_LIBS) rand_sets
 clean:
 	@rm -f *.out *.h
 	@$(MAKE) -C sort clean
+	@$(MAKE) -C search clean
 
 $(TARGETS):%.out:%.c
 	@$(CC) $(CFLAGS) $*.c -o $*.out

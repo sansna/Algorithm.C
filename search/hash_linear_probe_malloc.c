@@ -17,13 +17,24 @@ struct SRH_HASH {
 	struct HASH_ITEM **p;
 	void (*init)(struct SRH_HASH*);
 	int (*hash)(int);
+	struct HASH_ITEM **(*add_items)(void);
+	struct HASH_ITEM *(*add)(void);
 	int (*insert)(int , struct SRH_HASH*);
 	int (*search)(int, struct SRH_HASH*);
+	void (*free)(struct SRH_HASH*);
 };
+
+struct HASH_ITEM **tmp_init_items() {
+	return malloc(sizeof(struct HASH_ITEM*)*M);
+}
+
+struct HASH_ITEM *tmp_add_item() {
+	return malloc(sizeof(struct HASH_ITEM));
+}
 
 void tmp_init(struct SRH_HASH *ht) {
 	int i = 0;
-	ht->p = malloc(sizeof(struct HASH_ITEM*)*M);
+	ht->p = ht->add_items();
 	for (;i < M; i ++) {
 		ht->p[i] = NULL;
 	}
@@ -46,7 +57,7 @@ int tmp_insert(int value, struct SRH_HASH *ht) {
 			return 1;
 		bucket++;
 	}
-	ht->p[bucket] = malloc(sizeof(struct HASH_ITEM));
+	ht->p[bucket] = ht->add();
 	ht->p[bucket]->value = value;
 	return 0;
 }
@@ -66,6 +77,16 @@ int tmp_search(int value, struct SRH_HASH *ht) {
 	return 1;
 }
 
+void tmp_free(struct SRH_HASH* ht) {
+	int i = 0;
+	for (; i < M; i++) {
+		if (ht->p[i])
+			free(ht->p[i]);
+	}
+	free(ht->p);
+	return;
+}
+
 int main(int argc, char *argv[])
 {
 	struct SRH_HASH hash;
@@ -74,8 +95,11 @@ int main(int argc, char *argv[])
 
 	hash.init = tmp_init;
 	hash.hash = tmp_hash;
+	hash.add_items = tmp_init_items;
+	hash.add = tmp_add_item;
 	hash.insert = tmp_insert;
 	hash.search = tmp_search;
+	hash.free = tmp_free;
 
 	if (argc > 1) {
 		if (!strncmp(argv[1], "-h", 2)) {
@@ -103,5 +127,7 @@ int main(int argc, char *argv[])
 	if (!hash.search(v, &hash))
 		fprintf(stdout, "The value %d exists.\n", v);
 	else fprintf(stdout, "The value %d does not exist.\n", v);
+
+	hash.free(&hash);
 	return 0;
 }
