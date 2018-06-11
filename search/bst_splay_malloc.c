@@ -150,7 +150,6 @@ int main(int argc, char *argv[])
 	int i = 0;
 	int v = 0;
 	struct BST_SPLAY *root = malloc(sizeof(struct BST_SPLAY));
-	int ret = 0;
 
 	if (argc > 1) {
 		if (!strncmp(argv[1], "-h", 2)) {
@@ -178,5 +177,5 @@ int main(int argc, char *argv[])
 		fprintf(stdout, "The value %d exists.\n", v);
 	else fprintf(stdout, "The value %d does not exist.\n", v);
 	//bst_preorder(root->root);
-	return ret;
+	return 0;
 }

@@ -1,7 +1,26 @@
-Splay trees: Accessed item is placed at root, making the next visit
+--
+Easy:
+Splay Trees: Accessed item is placed at root, making the next visit
 to the same item cost O(1) time. However it is not a balanced tree, so
-it cannot provide worst case O(logN) access time.
+it *cannot* provide worst case O(logN) access time.
 Question: Why splay considers both grandparents and parents?
 Quick Answer: This method moves nodes upward quickly and downward slowly. And approaching an average amortized access time of O(logN).
 Lower Answer: https://cs.stackexchange.com/questions/1229/why-does-the-splay-tree-rotation-algorithm-take-into-account-both-the-parent-and#answer-1230
 
+--
+Medium:
+Size Balanced Tree(SBT): Each subtree's size is balanced and its average
+access time to items is O(logN). Insertion/deletion time also costs O(logN).
+The size of a subtree is its elements' count. Not the height of subtree.
+However when any cousin's decendent's elements' count is not greater than
+its cousin's elements' count, the balance feature is satisfied.
+-Note that after insertion/deletion, the *maintain* process should be apply
+to root's both subtree.
+-Also note that sbt keeps each node's element count with it, the count should
+be updated everytime inserts/rotates.
+
+--
+Hard:
+Red-Black Trees: Not easy to implement, but is a kind of balanced tree.
+It can provide worst case O(logN) access time.
+Insertion/Deletion in RBT can also be as worst as O(logN).
