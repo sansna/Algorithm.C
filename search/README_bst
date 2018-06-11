@@ -1,0 +1,7 @@
+Splay trees: Accessed item is placed at root, making the next visit
+to the same item cost O(1) time. However it is not a balanced tree, so
+it cannot provide worst case O(logN) access time.
+Question: Why splay considers both grandparents and parents?
+Quick Answer: This method moves nodes upward quickly and downward slowly. And approaching an average amortized access time of O(logN).
+Lower Answer: https://cs.stackexchange.com/questions/1229/why-does-the-splay-tree-rotation-algorithm-take-into-account-both-the-parent-and#answer-1230
+
