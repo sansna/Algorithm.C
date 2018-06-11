@@ -10,7 +10,7 @@ Lower Answer: https://cs.stackexchange.com/questions/1229/why-does-the-splay-tre
 --
 Medium:
 Size Balanced Tree(SBT): Each subtree's size is balanced and its average
-access time to items is O(logN). Insertion/deletion time also costs O(logN).
+access time to items is O(logN). Insertion/deletion also costs O(logN).
 The size of a subtree is its elements' count. Not the height of subtree.
 However when any cousin's decendent's elements' count is not greater than
 its cousin's elements' count, the balance feature is satisfied.
