@@ -1,7 +1,7 @@
 #include <stdio.h>
 //atoi
 #include <stdlib.h>
-//strncpy
+//strncmp
 #include <string.h>
 
 #include "../random_set1.h"
