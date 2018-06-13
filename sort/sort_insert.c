@@ -12,7 +12,7 @@ int main()
 	sort_insert(a, SIZE);
 
 #ifndef __NO_PRINT
-	for (i = 1; i <= SIZE; i ++)
+	for (i = 1; i < SIZE; i ++)
 		fprintf(stdout, "%d,", a[i]);
 #endif
 	return 0;

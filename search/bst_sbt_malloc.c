@@ -165,6 +165,29 @@ int search(int value, struct BST_SBT *r) {
 	return 1;
 }
 
+struct SBT_ITEM *sbt_select(struct SBT_ITEM *n, int idx) {
+	int size;
+	struct SBT_ITEM *ret;
+	if (!n || n->size < idx || idx == 0)
+		return NULL;
+	if (!n->left)
+		size = 0;
+	else size = n->left->size;
+
+	if (size >= idx) {
+		ret = sbt_select(n->left, idx);
+	} else if (size + 1 == idx) {
+		ret = n;
+	} else {
+		ret = sbt_select(n->right, idx - size - 1);
+	}
+	return ret;
+}
+
+struct SBT_ITEM *sbt_get_item_by_order(struct BST_SBT *r, int idx) {
+	return sbt_select(r->root, idx);
+}
+
 int bst_preorder(struct SBT_ITEM *n) {
 	if (!n)
 		return 0;
