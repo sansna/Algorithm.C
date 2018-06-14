@@ -34,4 +34,8 @@ $(TARGETS_WITH_LIBS):%.out:%.c
 rand_sets: random_gen.out
 	@./random_gen.out
 
+median.out: random_set1.h
+
+random_set1.h random_set2.h: rand_sets
+
 .PHONY:clean all
