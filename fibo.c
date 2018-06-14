@@ -20,13 +20,13 @@ int fibo(int n){
 		return -1;
 
 	switch (n){
-case 0:
-		return 0;
-		break;
-case 1:
-		return 1;
-		break;
-default:
-		return fibo(n - 1) + fibo(n - 2);
+		case 0:
+			return 0;
+			break;
+		case 1:
+			return 1;
+			break;
+		default:
+			return fibo(n - 1) + fibo(n - 2);
 	}
 }

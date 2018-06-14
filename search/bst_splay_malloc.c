@@ -145,6 +145,21 @@ int bst_preorder(struct SPLAY_ITEM *n) {
 	return 0;
 }
 
+int bst_free_node(struct SPLAY_ITEM *n) {
+	if (!n)
+		return 0;
+	bst_free_node(n->left);
+	bst_free_node(n->right);
+	free(n);
+	return 0;
+}
+
+int bst_free(struct BST_SPLAY *r) {
+	bst_free_node(r->root);
+	free(r);
+	return 0;
+}
+
 int main(int argc, char *argv[])
 {
 	int i = 0;
@@ -177,5 +192,7 @@ int main(int argc, char *argv[])
 		fprintf(stdout, "The value %d exists.\n", v);
 	else fprintf(stdout, "The value %d does not exist.\n", v);
 	//bst_preorder(root->root);
+	
+	bst_free(root);
 	return 0;
 }
