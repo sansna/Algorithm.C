@@ -6,7 +6,8 @@
 # $?: the names of all prerequisites that are newer than the target, separated by spaces.
 TARGETS = euc-mod.out\
 		  fibo.out\
-		  random_gen.out
+		  random_gen.out\
+		  median.out
 TARGETS_WITH_LIBS = prime.out
 
 CPPFLAGS = -D__NO_PRINT
