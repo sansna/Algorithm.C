@@ -73,6 +73,7 @@ int main() {
 		r2 = get_by_order(a, SIZE/2 + 1);
 		ret = (double)(r1 + r2)/2.0;
 	}
-	fprintf(stdout, "Median of set a[%d] is %llf.\n", SIZE, ret);
+	//Note in standard, %Lf for long double type, %lf for double, %f for float, no %llf.
+	fprintf(stdout, "Median of set a[%d] is %lf.\n", SIZE, ret);
 	return 0;
 }
