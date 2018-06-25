@@ -1,0 +1,6 @@
+Proof of reduced branching does not affect running speed.
+==
+Reduce branch counts with programming technique and
+therefore branch-misses are fewer. But there is a noticeable 
+efficiency drop in time.
+Consider why?

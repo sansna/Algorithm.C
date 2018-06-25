@@ -19,6 +19,7 @@ export LIBS TIME CFLAGS CPPFLAGS
 
 all: $(TARGETS) $(TARGETS_WITH_LIBS) rand_sets
 	@$(MAKE) -C sort
+	@$(MAKE) -C search
 
 clean:
 	@rm -f *.out *.h
