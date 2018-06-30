@@ -21,15 +21,20 @@ int min_2(int m, int n) {
 	return (m < n)?m:n;
 }
 
-int abs(int a) {
-	return (a < 0)?-a:a;
+int max_2(int m, int n) {
+	return (m > n)?m:n;
 }
 
 int euc_mod(int m , int n) {
+	int multiplier = 0;
+	int big, small=0;
+	big = max_2(m,n);
+	small = min_2(m,n);
 	if (m == 0 || n == 0)
-		return 0;
+		return big;
 	if (m == n)
 		return m;
+	multiplier = big/small;
 
-	euc_mod(min_2(m,n), abs(m-n));
+	return euc_mod(small,big-multiplier*small);
 }
