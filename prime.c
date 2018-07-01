@@ -45,7 +45,7 @@ int prime(int n) {
 }
 
 int prime_test(int n) {
-	int i = sqrt(n);
+	int i = (int)sqrt(n);
 	for (; i > 1; i--) {
 		if (1 == euc_mod(i, n))
 			continue;
